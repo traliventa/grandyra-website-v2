@@ -1,0 +1,8 @@
+﻿node_modules/
+__pycache__/
+*.pyc
+shots/
+.DS_Store
+# Private working documents (contain unconfirmed facts and a phone number). Keep local.
+docs/CONTENT-VERIFICATION.md
+LAUNCH-CHECKLIST.md

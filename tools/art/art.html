@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Bod;src:url(../site/assets/fonts/bodoni-italic.woff2);font-style:italic}
+@font-face{font-family:Arc;src:url(../site/assets/fonts/archivo-wdth.woff2);font-weight:100 900;font-stretch:62% 125%}
+body{margin:0;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1600" height="1200"></canvas>
+<script>
+const P = {
+  ink:'#0D0D0B', bone:'#EEE9DF', teal:'#0C7D84', lagoon:'#19B5BC', gold:'#C5A880',
+  verm:'#FF4F2B', plum:'#2A1B3D', moss:'#3E4A2C', sand:'#D9CBB0', deep:'#07393C'
+};
+function rng(seed){let s=seed>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296}}
+function grain(ctx,w,h,amt,r){const id=ctx.getImageData(0,0,w,h),d=id.data;for(let i=0;i<d.length;i+=4){const n=(r()-.5)*amt;d[i]+=n;d[i+1]+=n;d[i+2]+=n}ctx.putImageData(id,0,0)}
+function blob(ctx,x,y,rad,col,a){const g=ctx.createRadialGradient(x,y,0,x,y,rad);g.addColorStop(0,hexA(col,a));g.addColorStop(1,hexA(col,0));ctx.fillStyle=g;ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height)}
+function hexA(h,a){const n=parseInt(h.slice(1),16);return `rgba(${n>>16},${(n>>8)&255},${n&255},${a})`}
+
+const styles = {
+  // flowing hairline ribbons
+  ribbon(ctx,w,h,o,r){
+    ctx.fillStyle=o.bg;ctx.fillRect(0,0,w,h);
+    blob(ctx,w*.7,h*.3,w*.6,o.glow,.35);
+    for(let k=0;k<o.bands;k++){
+      const off=(r()-.5)*h*.5, amp=h*(.15+r()*.25), f=.002+r()*.002, ph=r()*6;
+      for(let i=0;i<70;i++){
+        ctx.beginPath();
+        ctx.strokeStyle=hexA(k%2?o.a:o.b,.18+.5*(i/70));
+        ctx.lineWidth=1.1;
+        for(let x=-20;x<=w+20;x+=8){
+          const y=h/2+off+Math.sin(x*f+ph+i*.035)*amp+Math.sin(x*f*2.3+ph)*amp*.3+i*2.2;
+          x<0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      }
+    }
+  },
+  // soft colour fields + one sharp geometric cut
+  halation(ctx,w,h,o,r){
+    ctx.fillStyle=o.bg;ctx.fillRect(0,0,w,h);
+    for(let i=0;i<5;i++) blob(ctx,r()*w,r()*h,w*(.35+r()*.4),[o.a,o.b,o.glow][i%3],.75);
+    ctx.globalCompositeOperation='source-over';
+    ctx.fillStyle=o.cut;
+    if(o.shape==='circle'){ctx.beginPath();ctx.arc(w*.62,h*.5,h*.3,0,Math.PI*2);ctx.fill();}
+    else {ctx.fillRect(w*.18,h*.22,w*.26,h*.56);}
+  },
+  // ordered dot grid that breaks into noise (noise -> clarity)
+  grid(ctx,w,h,o,r){
+    ctx.fillStyle=o.bg;ctx.fillRect(0,0,w,h);
+    const s=26;
+    for(let y=s;y<h;y+=s)for(let x=s;x<w;x+=s){
+      const t=Math.min(1,Math.max(0,(x/w-.35)*2.2));
+      const jx=(r()-.5)*s*3*t, jy=(r()-.5)*s*3*t;
+      const rad=3+ (r()*7)*t;
+      ctx.fillStyle= t>.4 && r()<.35 ? o.b : o.a;
+      ctx.beginPath();ctx.arc(x+jx,y+jy,rad,0,Math.PI*2);ctx.fill();
+    }
+  },
+  // architectural monolith shapes with long shadows
+  monolith(ctx,w,h,o,r){
+    const g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,o.bg);g.addColorStop(1,o.bg2);ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    const blocks=[[.2,.35,.16,.5],[.42,.2,.12,.65],[.6,.45,.22,.4]];
+    blocks.forEach((b,i)=>{
+      const [x,y,bw,bh]=b.map((v,j)=>v*(j%2?h:w));
+      ctx.fillStyle=hexA('#000000',.18);
+      ctx.beginPath();ctx.moveTo(x+bw,y+bh);ctx.lineTo(x+bw+w*.35,y+bh+h*.08);ctx.lineTo(x+w*.35,y+bh+h*.08);ctx.lineTo(x,y+bh);ctx.fill();
+      ctx.fillStyle=[o.a,o.b,o.c][i];ctx.fillRect(x,y,bw,bh);
+    });
+    ctx.fillStyle=hexA(o.c,.9);ctx.beginPath();ctx.arc(w*.8,h*.22,h*.07,0,Math.PI*2);ctx.fill();
+  },
+  // giant cropped letterform
+  letter(ctx,w,h,o,r){
+    ctx.fillStyle=o.bg;ctx.fillRect(0,0,w,h);
+    blob(ctx,w*.3,h*.7,w*.7,o.glow,.45);
+    ctx.fillStyle=o.a;
+    ctx.font=`italic ${h*1.35}px Bod`;
+    ctx.textBaseline='alphabetic';
+    ctx.fillText(o.ch,w*o.x,h*1.02);
+    ctx.strokeStyle=hexA(o.b,.9);ctx.lineWidth=2;
+    ctx.strokeRect(w*.06,h*.08,w*.88,h*.84);
+  },
+  // condensed type stack
+  stack(ctx,w,h,o,r){
+    ctx.fillStyle=o.bg;ctx.fillRect(0,0,w,h);
+    ctx.font=`800 ${h*.26}px Arc`;ctx.fontStretch='condensed';
+    const words=o.words;
+    words.forEach((t,i)=>{ctx.fillStyle=i===o.hi?o.b:o.a;ctx.fillText(t,w*.05,h*(.3+i*.24));});
+  }
+};
+
+const JOBS = {
+  // work covers
+  'work-01':['grid',{bg:P.ink,a:P.bone,b:P.verm}],
+  'work-02':['halation',{bg:P.plum,a:P.verm,b:P.gold,glow:P.teal,cut:P.bone,shape:'circle'}],
+  'work-03':['monolith',{bg:P.sand,bg2:P.bone,a:P.teal,b:P.ink,c:P.verm}],
+  'work-04':['ribbon',{bg:P.ink,a:P.gold,b:P.lagoon,glow:P.teal,bands:2}],
+  'work-05':['letter',{bg:P.deep,a:P.gold,b:P.bone,glow:P.lagoon,ch:'G',x:.12}],
+  // service covers
+  'svc-brand-identity-design':['letter',{bg:P.ink,a:P.verm,b:P.gold,glow:P.teal,ch:'a',x:.2}],
+  'svc-rebranding':['halation',{bg:P.deep,a:P.lagoon,b:P.gold,glow:P.verm,cut:P.ink,shape:'rect'}],
+  'svc-brand-launch':['ribbon',{bg:P.verm,a:P.bone,b:P.ink,glow:P.gold,bands:2}],
+  'svc-packaging-design':['monolith',{bg:P.gold,bg2:P.sand,a:P.ink,b:P.bone,c:P.teal}],
+  'svc-advertising-agency':['halation',{bg:P.ink,a:P.verm,b:P.plum,glow:P.gold,cut:P.lagoon,shape:'circle'}],
+  'svc-brand-marketing':['grid',{bg:P.teal,a:P.bone,b:P.gold}],
+  'svc-pr-agency':['letter',{bg:P.bone,a:P.teal,b:P.ink,glow:P.gold,ch:'&',x:.18}],
+  'svc-event-management':['ribbon',{bg:P.plum,a:P.verm,b:P.gold,glow:P.lagoon,bands:3}],
+  'svc-corporate-training':['monolith',{bg:P.deep,bg2:P.ink,a:P.gold,b:P.lagoon,c:P.bone}],
+  'svc-retainer-partnership':['grid',{bg:P.ink,a:P.gold,b:P.lagoon}],
+  // studio / about
+  'studio-01':['halation',{bg:P.ink,a:P.teal,b:P.verm,glow:P.gold,cut:P.bone,shape:'rect'}],
+  'og-default':['letter',{bg:P.ink,a:P.bone,b:P.gold,glow:P.teal,ch:'G',x:.3}],
+};
+window.render=(name)=>{
+  const [style,o]=JOBS[name];const c=document.getElementById('c');const ctx=c.getContext('2d');
+  ctx.globalCompositeOperation='source-over';ctx.clearRect(0,0,c.width,c.height);
+  const r=rng([...name].reduce((a,ch)=>a*31+ch.charCodeAt(0),7));
+  styles[style](ctx,c.width,c.height,o,r);
+  grain(ctx,c.width,c.height,26,r);
+  return c.toDataURL('image/png');
+};
+window.JOBS=Object.keys(JOBS);
+</script></body></html>
