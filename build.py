@@ -382,7 +382,7 @@ def build():
     def work_card(w, sizes="56vw"):
         inner = work_visual(w, sizes) + work_meta(w)
         if w["href"]:
-            return f'<a class="card" href="{w["href"]}" data-cursor="View" aria-label="{html.escape(w["title"])}: view case study">{inner}</a>'
+            return f'<a class="card" href="{w["href"]}" data-cursor="View">{inner}</a>'
         return f'<div class="card">{inner}</div>'
 
     cards = "".join(work_card(w) for w in WORK)
