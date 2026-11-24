@@ -156,7 +156,10 @@
       });
     };
     walk(el);
-    gsap.to(el.querySelectorAll(".mw"), { opacity: 1, stagger: 0.08, ease: "none", scrollTrigger: { trigger: el, start: "top 78%", end: "bottom 45%", scrub: 0.6 } });
+    var sec = el.closest(".manifesto") || el;
+    // Dim the words only from 60% of a screen before the section appears until it has gone by.
+    ScrollTrigger.create({ trigger: sec, start: "top bottom+=60%", end: "bottom top-=20%", toggleClass: { targets: sec, className: "dim" } });
+    gsap.fromTo(el.querySelectorAll(".mw"), { opacity: 0.14 }, { opacity: 1, stagger: 0.08, ease: "none", immediateRender: false, scrollTrigger: { trigger: el, start: "top 78%", end: "bottom 45%", scrub: 0.6 } });
   }
 
   /* ---------- Menu ---------- */

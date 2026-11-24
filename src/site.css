@@ -212,7 +212,11 @@ html:not(.js) .fade { opacity: 1; transform: none; }
 .manifesto .txt { font-size: clamp(1.9rem, 4.3vw, 4.6rem); line-height: 1.06; letter-spacing: -.025em; font-weight: 500; font-stretch: 88%; max-width: 23ch; text-indent: 18%; }
 .manifesto .txt a { color: var(--teal); }
 .manifesto .txt .it { font-size: 1.06em; }
-.manifesto .txt .mw { opacity: .14; transition: none; }
+/* The words are fully readable by default. The faint "not read yet" state (.dim) is switched on by main.js only
+   while the section is approaching or inside the viewport, so it exists only as part of the scroll reveal. */
+.manifesto .txt .mw { opacity: 1; transition: none; }
+.manifesto.dim .txt .mw { opacity: .14; }
+.manifesto .txt a:focus-visible .mw { opacity: 1 !important; }
 .manifesto .grid { display: grid; grid-template-columns: 1fr 3fr; gap: var(--pad); }
 .badge { width: clamp(120px, 12vw, 170px); aspect-ratio: 1; position: relative; }
 .badge svg { width: 100%; height: 100%; animation: spin 18s linear infinite; }
