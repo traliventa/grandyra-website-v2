@@ -22,9 +22,11 @@
 
   /* ---------- Dhaka clock ---------- */
   function tick() {
-    var t = new Date(Date.now() + (new Date().getTimezoneOffset() + 360) * 60000);
-    var s = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2);
+    var s;
+    try { s = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Dhaka", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date()); }
+    catch (e) { var t = new Date(Date.now() + (new Date().getTimezoneOffset() + 360) * 60000); s = ("0" + t.getHours()).slice(-2) + ":" + ("0" + t.getMinutes()).slice(-2); }
     d.querySelectorAll("[data-clock]").forEach(function (el) { el.textContent = s; });
+    html.classList.add("clock-ready");
   }
   tick(); setInterval(tick, 20000);
   d.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });

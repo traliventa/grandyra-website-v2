@@ -90,6 +90,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .loader .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--verm); transform-origin: left; transform: scaleX(0); }
 .no-loader .loader, html:not(.gy-first) .loader, html:not(.js) .curtain { display: none; }
 html:not(.js) .fade { opacity: 1; transform: none; }
+/* The Dhaka clock stays invisible (its space is kept) until the script has filled in the real time. */
+.clk { visibility: hidden; }
+.clock-ready .clk { visibility: visible; }
 
 /* ---------- Curtain (page transition) ---------- */
 .curtain { position: fixed; inset: 0; z-index: 150; pointer-events: none; display: grid; grid-template-columns: repeat(5, 1fr); }

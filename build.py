@@ -223,7 +223,7 @@ def chrome_top(current=""):
 <div class="curtain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <header class="hdr">
   <a class="wm" href="index.html" aria-label="Grandyra home">{logo("mark", "gy-logo wm-mark")}<span class="wm-txt">Grandyra</span></a>
-  <span class="clock label">Dhaka <span data-clock>--:--</span> GMT+6</span>
+  <span class="clock label clk">Dhaka <span data-clock>--:--</span> GMT+6</span>
   <nav class="hdr-nav label" aria-label="Primary">{inline_nav}</nav>
   <div class="right"><a class="cta-link label" href="contact.html">Start a project</a>
   <button class="menu-btn label" aria-expanded="false" aria-controls="menu"><span class="lbl">Menu</span><span class="dots" aria-hidden="true"></span></button></div>
@@ -250,7 +250,7 @@ def chrome_bottom():
   <div class="foot-grid">
     <div>
       {mail_row()}
-      <address class="muted" style="margin-top:1.5rem;font-style:normal">Grandyra Limited<br>{ADDRESS}<br>It’s <span data-clock>--:--</span> in Dhaka right now.</address>
+      <address class="muted" style="margin-top:1.5rem;font-style:normal">Grandyra Limited<br>{ADDRESS}<br><span class="clk">It’s <span data-clock>--:--</span> in Dhaka right now.</span></address>
     </div>
     <div><h3 class="label">Services</h3><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
     <div><h3 class="label">Studio</h3><ul><li><a href="work.html">Work</a></li><li><a href="journal.html">Journal</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
@@ -487,7 +487,7 @@ def build():
       <p class="label muted">The studio</p>
       <h2 id="st" class="d d-l" data-split style="margin-top:1rem">Made in<br><span class="it">Dhaka.</span></h2>
       <p class="lede fade" style="margin-top:1.5rem">We work with businesses, institutions and founders who have something worth building. Our studio is a small team of strategists, designers and makers who care a slightly unreasonable amount about getting it right.</p>
-      <div class="facts fade"><div><b>Gulshan-1</b><span class="label muted">House 7, Road 4, Dhaka</span></div><div><b><span data-clock>--:--</span></b><span class="label muted">Dhaka time</span></div><div><b><a href="mailto:{EMAIL}" class="ulink">Email us</a></b><span class="label muted">{EMAIL}</span></div></div>
+      <div class="facts fade"><div><b>Gulshan-1</b><span class="label muted">House 7, Road 4, Dhaka</span></div><div class="clk"><b><span data-clock>--:--</span></b><span class="label muted">Dhaka time</span></div><div><b><a href="mailto:{EMAIL}" class="ulink">Email us</a></b><span class="label muted">{EMAIL}</span></div></div>
       <a class="pill solid" href="about.html" style="margin-top:2rem" data-magnetic>About Grandyra</a>
     </div>
   </div>
@@ -775,7 +775,7 @@ def build():
     <div style="margin-top:.6rem">{mail_row()}</div>
     <p class="label muted" style="margin-top:2rem">Studio</p>
     <address style="font-style:normal;margin-top:.5rem">Grandyra Limited<br>{ADDRESS}<br><a class="ulink" href="{maps}" target="_blank" rel="noopener">Open in Maps</a></address>
-    <p class="muted" style="margin-top:1.5rem">It’s <span data-clock>--:--</span> in Dhaka right now.</p></div>
+    <p class="muted clk" style="margin-top:1.5rem">It’s <span data-clock>--:--</span> in Dhaka right now.</p></div>
   </div>
   <form class="form" data-inquiry data-to="{EMAIL}" data-endpoint="{FORM_ENDPOINT}" novalidate>
     <div class="hp" aria-hidden="true"><label>Leave this field empty<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
