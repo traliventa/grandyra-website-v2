@@ -509,7 +509,9 @@ html:not(.js) .fade { opacity: 1; transform: none; }
 .need:focus-visible, .card:focus-visible, .wc:focus-visible, .cover:focus-visible { outline-offset: -3px; }
 
 /* contrast fixes (WCAG AA): the brand teal is 4.05:1 against bone, so text on teal and teal text use a deeper tint */
-:root { --teal-text: #0A6A70; }
+:root { --teal-text: #0A6A70; --muted-on-dark: #7F7A70; }
+/* small grey labels on the near-black pages: #6B665D was 3.41:1, #7F7A70 is 4.56:1 */
+.t-ink .foot-grid h3, .t-ink .legal, .t-ink .facts-bar dt, .t-ink .field label { color: var(--muted-on-dark); }
 .prose a, .manifesto .txt a { color: var(--teal-text); }
 .imgr.typo.t-teal, .pcard.t-teal { background: var(--teal-text); }
 .t-teal .muted { color: rgba(238,233,223,.88); }
