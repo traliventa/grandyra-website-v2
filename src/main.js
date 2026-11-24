@@ -432,5 +432,11 @@
     lenis.on("scroll", function (e) { var s = Math.max(-2, Math.min(2, e.velocity * 0.07)); setters.forEach(function (f) { f(s); }); });
   }
 
-  addEventListener("load", function () { if (hasGsap) ScrollTrigger.refresh(); });
+  addEventListener("load", function () {
+    if (hasGsap) ScrollTrigger.refresh();
+    // The menu picture and the hover preview are not needed to paint the page: fetch them once everything else is done.
+    (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(function () {
+      d.querySelectorAll("img[data-src]").forEach(function (im) { im.src = im.getAttribute("data-src"); });
+    });
+  });
 })();

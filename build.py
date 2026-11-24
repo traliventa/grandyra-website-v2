@@ -231,7 +231,7 @@ def chrome_top(current=""):
 <div class="menu" id="menu" aria-hidden="true">
   <nav aria-label="Main">{nav}</nav>
   <aside>
-    <div class="pic"><img src="assets/img/work-04-sm.webp" alt="" width="800" height="600"></div>
+    <div class="pic"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/work-04-sm.webp" alt="" width="800" height="600"></div>
     <div><p class="label muted">Say hello</p><ul><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li class="muted">{ADDRESS}</li></ul>
     <p class="label muted" style="margin-top:2rem">Elsewhere</p><ul>{social_links()}</ul></div>
   </aside>
@@ -283,6 +283,7 @@ def page(path, title, desc, body, lang="en", schema=None, og="website", robots=N
 <meta property="og:locale" content="en_BD"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{html.escape(title)}"><meta name="twitter:description" content="{html.escape(desc)}"><meta name="twitter:image" content="{BASE}/assets/img/{og_image}">
 <link rel="preload" href="assets/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/bodoni-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/mono.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="manifest" href="assets/site.webmanifest">
 <script src="assets/boot.js"></script>
 <link rel="stylesheet" href="assets/site.css">{extra_head}
@@ -311,7 +312,7 @@ def needs_rows(theme_dark=False):
         q, c = NEED[s["slug"]]
         out.append(f'''<a class="need" href="{s["slug"]}.html" style="--c:{c}" data-img="assets/img/svc-{s["slug"]}-sm.webp" data-cursor="Explore">
 <span class="n">{icon(ICON[s["slug"]])}</span><span class="q d">{q}</span><span class="s">{s["name"]} <span class="arr" aria-hidden="true">→</span></span></a>''')
-    return "".join(out) + '<div class="float-img" aria-hidden="true"><img src="assets/img/svc-brand-identity-design-sm.webp" alt="" width="800" height="600"></div>'
+    return "".join(out) + '<div class="float-img" aria-hidden="true"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/svc-brand-identity-design-sm.webp" alt="" width="800" height="600"></div>'
 
 
 def covers(items):
