@@ -284,6 +284,7 @@ def page(path, title, desc, body, lang="en", schema=None, og="website", robots=N
 <link rel="preload" href="assets/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/bodoni-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png"><link rel="manifest" href="assets/site.webmanifest">
+<script src="assets/boot.js"></script>
 <link rel="stylesheet" href="assets/site.css">{extra_head}
 {ld}
 </head>
@@ -346,8 +347,9 @@ def build():
                 os.remove(os.path.join(OUT, f))
     shutil.copy(os.path.join(ROOT, "src/site.css"), os.path.join(OUT, "assets/site.css"))
     shutil.copy(os.path.join(ROOT, "src/main.js"), os.path.join(OUT, "assets/main.js"))
+    shutil.copy(os.path.join(ROOT, "src/boot.js"), os.path.join(OUT, "assets/boot.js"))
     import subprocess
-    for f in ("assets/site.css", "assets/main.js"):
+    for f in ("assets/site.css", "assets/main.js", "assets/boot.js"):
         p = os.path.join(OUT, f)
         try:
             subprocess.run(["npx", "esbuild", p, "--minify", "--allow-overwrite", "--outfile=" + p, "--log-level=error"], cwd=ROOT, check=True)

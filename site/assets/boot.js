@@ -1,0 +1,2 @@
+(function(){var h=document.documentElement;h.classList.add("js");try{if(!sessionStorage.getItem("gy-seen"))h.classList.add("gy-first");}catch(e){}
+setTimeout(function(){if(!document.body||!document.body.classList.contains("ready"))h.classList.remove("js","gy-first");},6000);})();

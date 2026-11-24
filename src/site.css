@@ -88,7 +88,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .loader .count { font-size: clamp(5rem, 18vw, 16rem); }
 .loader .word { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: clamp(2rem, 6vw, 5rem); }
 .loader .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--verm); transform-origin: left; transform: scaleX(0); }
-.no-loader .loader, html:not(.js) .loader, html:not(.js) .curtain { display: none; }
+.no-loader .loader, html:not(.gy-first) .loader, html:not(.js) .curtain { display: none; }
 html:not(.js) .fade { opacity: 1; transform: none; }
 
 /* ---------- Curtain (page transition) ---------- */
