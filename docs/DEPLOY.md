@@ -9,12 +9,13 @@ npm install            # fonts, GSAP, Lenis, lucide icons, esbuild
 python3 build.py       # production build into site/
 ```
 
-Options (environment variables):
-| Variable | Effect |
+Options (command-line flags; the matching environment variables still work):
+| Flag | Effect |
 |---|---|
-| `SITE_URL=https://staging.example.com` | Changes every canonical, Open Graph and sitemap URL (default `https://grandyra.com`) |
-| `PREVIEW=1` | Marks the copy `noindex, nofollow` and writes `robots.txt` as `Disallow: /`. Use for review links |
-| `HOLD_UNVERIFIED=1` | Leaves out the four service pages that are not yet confirmed |
+| `--site-url https://staging.example.com` | Changes every canonical, Open Graph URL and sitemap entry (default `https://grandyra.com`) |
+| `--preview` | Marks the copy `noindex, nofollow` and writes `robots.txt` as `Disallow: /`. Use for review links (`npm run build:preview`) |
+| `--hold-unverified` | Leaves out the four service pages that are not yet confirmed |
+| `--out DIR` | Writes the site to another folder instead of `site/` |
 
 Without Node, the build still runs but CSS and JS are not minified (a warning is printed). Always build with `npm install` first for production.
 
@@ -27,7 +28,7 @@ Any static host works. `site/` contains host files that the build copies in from
 
 ## 3. Domain
 
-1. Choose one address, `grandyra.com` or `www.grandyra.com`, and redirect the other to it (301). The canonical tags use `https://grandyra.com`. If you choose `www`, build with `SITE_URL=https://www.grandyra.com`.
+1. Choose one address, `grandyra.com` or `www.grandyra.com`, and redirect the other to it (301). The canonical tags use `https://grandyra.com`. If you choose `www`, build with `python3 build.py --site-url https://www.grandyra.com`.
 2. Add the domain in your host's dashboard and create the DNS records it shows. Those values are specific to the host, so they are not listed here.
 3. Turn on HTTPS and "force HTTPS". The `.htaccess` and `_headers` files send an HSTS header, so only do this once HTTPS works.
 4. Pages are linked as `about.html`, while canonicals use `/about`. Netlify and Cloudflare Pages serve both. On Apache the `.htaccess` rewrite does it. Check that `/about` and `/about.html` both load.

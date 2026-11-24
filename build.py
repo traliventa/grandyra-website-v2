@@ -6,19 +6,33 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "too
 import legacy_data as old  # reuse verified copy: SERVICES, WORK, ISSUES, P()
 
 P = old.P
-# Production URL. Override for staging: SITE_URL=https://staging.example.com python3 build.py
-BASE = os.environ.get("SITE_URL", "https://grandyra.com").rstrip("/")
-# PREVIEW=1 builds a private review copy that search engines are told to ignore.
-PREVIEW = os.environ.get("PREVIEW") == "1"
+
+# Build switches. Command-line flags win; the matching environment variables still work.
+#   python3 build.py                     live build: indexable, canonical URLs on https://grandyra.com
+#   python3 build.py --preview           review/staging build: noindex, nofollow and robots.txt Disallow: /
+#   python3 build.py --site-url URL      use another address for canonicals, share images and the sitemap
+#   python3 build.py --hold-unverified   leave out services Grandyra has not confirmed yet
+#   python3 build.py --out DIR           write the site to DIR instead of ./site (static assets are copied across)
+import argparse
+_ap = argparse.ArgumentParser(description="Grandyra site generator", add_help=True)
+_ap.add_argument("--preview", action="store_true")
+_ap.add_argument("--site-url")
+_ap.add_argument("--hold-unverified", action="store_true")
+_ap.add_argument("--out")
+_args = _ap.parse_args() if __name__ == "__main__" else _ap.parse_args([])
+BASE = (_args.site_url or os.environ.get("SITE_URL", "https://grandyra.com")).rstrip("/")
+PREVIEW = _args.preview or os.environ.get("PREVIEW") == "1"
+HOLD_UNVERIFIED = _args.hold_unverified or os.environ.get("HOLD_UNVERIFIED") == "1"
 ROOT = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(ROOT, "site")
+DEFAULT_OUT = os.path.join(ROOT, "site")
+OUT = os.path.abspath(_args.out) if _args.out else DEFAULT_OUT
 PAGES = []
 
 SERVICES = old.SERVICES
-# Services that do not appear in Grandyra's own documents yet. HOLD_UNVERIFIED=1 python3 build.py leaves them out
+# Services that do not appear in Grandyra's own documents yet. --hold-unverified leaves them out
 # (pages, menu, footer, form options, sitemap) until the company confirms them. See docs/CONTENT-VERIFICATION.md.
 UNVERIFIED = {"packaging-design", "brand-launch", "rebranding", "retainer-partnership"}
-if os.environ.get("HOLD_UNVERIFIED") == "1":
+if HOLD_UNVERIFIED:
     SERVICES = [s for s in SERVICES if s["slug"] not in UNVERIFIED]
 SVC = {s["slug"]: s for s in SERVICES}
 NWORD = {10: "Ten", 6: "Six"}.get(len(SERVICES), str(len(SERVICES)))
@@ -194,7 +208,7 @@ ORG["sameAs"] = [u for _, u in SOCIAL]
 ORG["@id"] = BASE + "/#org"
 ORG["url"] = BASE + "/"
 ORG["email"] = EMAIL
-ORG["logo"] = BASE + "/assets/favicon.svg"
+ORG["logo"] = BASE + "/assets/icon-512.png"
 ORG["address"] = {"@type": "PostalAddress", "streetAddress": "House 7, Road 4, Gulshan-1", "addressLocality": "Dhaka", "addressCountry": "BD"}
 
 
@@ -342,6 +356,8 @@ def next_card(i):
 
 
 def build():
+    if OUT != DEFAULT_OUT:  # building elsewhere: bring the static fonts, images and vendor scripts along
+        shutil.copytree(DEFAULT_OUT, OUT, dirs_exist_ok=True)
     if os.path.exists(OUT):
         for f in os.listdir(OUT):
             if f.endswith(".html") or f in ("sitemap.xml", "robots.txt"):
