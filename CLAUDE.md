@@ -13,7 +13,7 @@ Static multi-page site for Grandyra Limited (branding and creative house, Dhaka)
 
 ## Commands
 - Install: `npm install` (fonts, GSAP, Lenis, lucide icons, esbuild) and `pip install playwright pillow` for tools.
-- Build: `python3 build.py` (needs `npx esbuild` from node_modules).
+- Build: `python3 build.py` (live, indexable) or `python3 build.py --preview` (review copy: noindex). Needs `npx esbuild` from node_modules for minifying. Other flags: `--site-url`, `--hold-unverified`, `--out`. See `LAUNCH_CHECKLIST.md`.
 - Preview: `cd site && python3 -m http.server 8000`.
 
 ## Brand and content sources

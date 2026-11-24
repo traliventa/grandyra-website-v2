@@ -1,2 +1,1 @@
-(function(){var h=document.documentElement;h.classList.add("js");try{if(!sessionStorage.getItem("gy-seen"))h.classList.add("gy-first");}catch(e){}
-setTimeout(function(){if(!document.body||!document.body.classList.contains("ready"))h.classList.remove("js","gy-first");},6000);})();
+(function(){var s=document.documentElement;s.classList.add("js");try{sessionStorage.getItem("gy-seen")||s.classList.add("gy-first")}catch{}setTimeout(function(){(!document.body||!document.body.classList.contains("ready"))&&s.classList.remove("js","gy-first")},6e3)})();

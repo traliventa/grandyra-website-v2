@@ -369,7 +369,7 @@ def build():
     for f in ("assets/site.css", "assets/main.js", "assets/boot.js"):
         p = os.path.join(OUT, f)
         try:
-            subprocess.run(["npx", "esbuild", p, "--minify", "--allow-overwrite", "--outfile=" + p, "--log-level=error"], cwd=ROOT, check=True)
+            subprocess.run([shutil.which("npx") or "npx", "esbuild", p, "--minify", "--allow-overwrite", "--outfile=" + p, "--log-level=error"], cwd=ROOT, check=True)
         except (FileNotFoundError, subprocess.CalledProcessError):
             print(f"warning: esbuild not available, {f} was copied without minifying (run `npm install` first)")
     deploy = os.path.join(ROOT, "src", "deploy")  # host config (_headers, .htaccess) and icons
