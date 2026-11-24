@@ -455,11 +455,11 @@ def build():
     <div class="sticky"><p class="label muted">How we work</p><h2 id="pr" class="d d-l" data-split style="margin-top:1rem">No shortcuts<br>through the<br><span class="it">first step.</span></h2>
     <p class="lede fade" style="margin-top:2rem">Five stages, one team, from the first conversation to long after launch.</p></div>
     <div>
-      <article class="pcard t-ink"><div class="hd"><span class="num d">01</span><h3 class="d d-m">Discover</h3></div><span class="big d it" aria-hidden="true">01</span><p class="muted">We listen, research and question until the real problem is clear.</p></article>
-      <article class="pcard t-deep"><div class="hd"><span class="num d">02</span><h3 class="d d-m">Define</h3></div><span class="big d it" aria-hidden="true">02</span><p class="muted">We set the strategy and the direction before any design begins.</p></article>
-      <article class="pcard t-verm"><div class="hd"><span class="num d">03</span><h3 class="d d-m">Create</h3></div><span class="big d it" aria-hidden="true">03</span><p>Ideas are invented first, then crafted across every touchpoint.</p></article>
-      <article class="pcard t-gold"><div class="hd"><span class="num d">04</span><h3 class="d d-m">Refine</h3></div><span class="big d it" aria-hidden="true">04</span><p>We iterate and polish until every detail earns its place.</p></article>
-      <article class="pcard t-teal"><div class="hd"><span class="num d">05</span><h3 class="d d-m">Endure</h3></div><span class="big d it" aria-hidden="true">05</span><p>We build systems that keep the brand relevant long after launch.</p></article>
+      <article class="pcard t-ink"><div class="hd"><span class="num d">01</span><h3 class="d d-m">Discover</h3></div><span class="big d it" data-n="01" aria-hidden="true"></span><p class="muted">We listen, research and question until the real problem is clear.</p></article>
+      <article class="pcard t-deep"><div class="hd"><span class="num d">02</span><h3 class="d d-m">Define</h3></div><span class="big d it" data-n="02" aria-hidden="true"></span><p class="muted">We set the strategy and the direction before any design begins.</p></article>
+      <article class="pcard t-verm"><div class="hd"><span class="num d">03</span><h3 class="d d-m">Create</h3></div><span class="big d it" data-n="03" aria-hidden="true"></span><p>Ideas are invented first, then crafted across every touchpoint.</p></article>
+      <article class="pcard t-gold"><div class="hd"><span class="num d">04</span><h3 class="d d-m">Refine</h3></div><span class="big d it" data-n="04" aria-hidden="true"></span><p>We iterate and polish until every detail earns its place.</p></article>
+      <article class="pcard t-teal"><div class="hd"><span class="num d">05</span><h3 class="d d-m">Endure</h3></div><span class="big d it" data-n="05" aria-hidden="true"></span><p>We build systems that keep the brand relevant long after launch.</p></article>
     </div>
   </div>
 </section>
@@ -722,7 +722,7 @@ def build():
   <h1 class="{h1cls}"{h1style} data-split>{h1}</h1>
 </section>
 <section class="{th}" style="padding-bottom:5rem"><div class="cover-band">{img(im, "Issue " + no + " cover art", parallax=True, eager=True)}</div></section>
-<section class="sec t-bone wrap"><div class="split2"><div class="side"><span class="d it" style="font-size:clamp(6rem,12vw,12rem);color:var(--verm)">{no}</span></div>
+<section class="sec t-bone wrap"><div class="split2"><div class="side"><span class="d it issue-no" data-n="{no}" aria-hidden="true" style="font-size:clamp(6rem,12vw,12rem);color:var(--verm)"></span></div>
 <div class="prose">{prose_from_old(path)}</div></div></section>
 <section class="sec t-bone wrap" style="padding-top:0"><p class="label muted" style="margin-bottom:1.5rem">Related</p><div class="rel">{relh}<a href="journal.html"><span class="d d-m">More issues</span><span class="label">Journal →</span></a></div></section>
 </article>'''

@@ -278,6 +278,7 @@ html:not(.js) .fade { opacity: 1; transform: none; }
 .pcard:nth-child(1) { top: 6rem; } .pcard:nth-child(2) { top: 10rem; } .pcard:nth-child(3) { top: 14rem; } .pcard:nth-child(4) { top: 18rem; } .pcard:nth-child(5) { top: 22rem; }
 .pcard { min-height: 52vh; }
 .pcard .num { font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: .8; }
+.pcard .big::before, .issue-no::before { content: attr(data-n); }
 .pcard .big { font-size: clamp(6rem, 13vw, 13rem); line-height: .75; opacity: .16; align-self: flex-end; }
 .pcard p { max-width: 36ch; font-size: 1.1rem; }
 @media (max-width: 900px) { .process .grid { grid-template-columns: 1fr; } .process .sticky { position: static; } .pcard { min-height: 48vh; } }
