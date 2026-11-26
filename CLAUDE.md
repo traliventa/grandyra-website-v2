@@ -18,8 +18,9 @@ Static multi-page site for Grandyra Limited (branding and creative house, Dhaka)
 
 ## Brand and content sources
 - Logo: `src/brand/grandyra-mark.svg` and `grandyra-logo.svg` (from the official logo files), inlined by `logo()` in `build.py`. Favicon is `site/assets/favicon.svg`.
-- Official details: email info@grandyra.com, address House 7, Road 4, Gulshan-1, Dhaka (constants `EMAIL`, `ADDRESS` in `build.py`). No phone number is published on the site.
+- Official details: email info@grandyra.com, phone +88 01719-941795, address House 7, Road 4, Gulshan-1, Dhaka (constants `EMAIL`, `PHONE`, `ADDRESS` in `build.py`).
 - Real project facts (Souk Taban, Seheri Nights, The Audio Expo, First Momentum, Real Estate Futsal 2026) and the "Grand + Era / Y = Why" story come from the Grandyra profile, brand guideline and master presentation in `D:\GRANDYRA`. Real Futsal artwork is in `site/assets/img/futsal-*.webp`.
+- `WORK` in `build.py` is ordered upcoming first, then most recent. First Momentum is 16–18 March 2027 at Aloki, Gulshan.
 - The site is English only. Contact form opens the visitor's email app (mailto); set `data-endpoint` on the form if an inbox service is added.
 - Without Node, build with a wrapper that stubs `subprocess.run` (skips esbuild minify). Lucide icons must exist in `node_modules/lucide-static/icons/`.
 

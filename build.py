@@ -53,6 +53,8 @@ THEME = {"brand-identity-design": "t-ink", "rebranding": "t-deep", "brand-launch
          "corporate-training": "t-deep", "retainer-partnership": "t-ink"}
 
 EMAIL = "info@grandyra.com"
+PHONE = "+88 01719-941795"  # as shown on the site
+PHONE_TEL = "+8801719941795"  # for tel: links and structured data
 # Set to a form service URL (Formspree, Basin, Web3Forms...) to turn the contact form into a real online form.
 FORM_ENDPOINT = ""
 ADDRESS = "House 7, Road 4, Gulshan-1, Dhaka, Bangladesh"
@@ -60,9 +62,20 @@ ADDRESS = "House 7, Road 4, Gulshan-1, Dhaka, Bangladesh"
 # Real projects. Every fact below is taken from Grandyra's own profile, master presentation and Futsal deck.
 # Items marked CONFIRM are listed in LAUNCH-CHECKLIST.md for company sign-off.
 WORK = [
-    dict(no="01", href="work-real-estate-futsal-2026.html", title="Real Estate Futsal 2026", tagline="Official creative partner for a 16-team tournament at ISD, Dhaka",
+    dict(no="01", href="work-first-momentum.html", title="First Momentum", tagline="Electromechanical Expo Dhaka, organised by Grandyra at Aloki, Dhaka",
+         disc="Expo organised by Grandyra", year="Upcoming", cat="events",
+         stat="16–18 Mar", statlabel="2027, at Aloki, Dhaka", theme="t-gold",
+         photo=("first-momentum-2027", 1195, 896, "Electromechanical Expo, First Momentum, a Grandyra initiative: 16–18 March 2027 at Aloki, Gulshan, Dhaka"),
+         art=("first-momentum-2027-wide", 1680, 896),
+         lede="An expo that Grandyra is organising, bringing the people who build with the brands that equip them.",
+         body=["First Momentum is the Electromechanical Expo Dhaka. It is a platform that brings developers, architects, MEP consultants, regulators and students together with elevator, HVAC, generator and solar brands.",
+               "Unlike our other projects, this one is organised by Grandyra itself."],
+         did=[],
+         facts=[("Role", "Organiser"), ("Venue", "Aloki, Dhaka"), ("When", "16–18 March 2027"), ("Status", "Upcoming")],
+         result=""),
+    dict(no="02", href="work-real-estate-futsal-2026.html", title="Real Estate Futsal 2026", tagline="Official creative partner for a 16-team tournament at ISD, Dhaka",
          disc="Identity, trophies, venue and campaign", year="2026", cat="events", img="futsal-hero", real=True),
-    dict(no="02", href="work-souk-taban.html", title="Souk Taban", tagline="A brand and spatial identity for a three-day marketplace at SC Club, Banani",
+    dict(no="03", href="work-souk-taban.html", title="Souk Taban", tagline="A brand and spatial identity for a three-day marketplace at SC Club, Banani",
          disc="Brand identity, environmental graphics, spatial typography, event collateral, digital assets", year="2026", cat="brand",
          stat="2,000+", statlabel="visitors over three days", theme="t-teal",
          photo=("souk-hero", 1330, 650, "Souk Taban brand sign on a patterned dark ground, reading SC Club, Banani, 30 April to 2 May 2026"),
@@ -74,7 +87,7 @@ WORK = [
          did=["Brand identity", "Environmental graphics", "Spatial typography", "Event collateral", "Digital brand assets"],
          facts=[("Role", "Brand and experience design"), ("Venue", "SC Club, Banani"), ("When", "30 April – 2 May 2026"), ("Result", "2,000+ visitors")],
          result=""),
-    dict(no="03", href="work-seheri-nights.html", title="Seheri Nights", tagline="A Ramadan night market at ICCB, Dhaka, running from Iftaar to Seheri",
+    dict(no="04", href="work-seheri-nights.html", title="Seheri Nights", tagline="A Ramadan night market at ICCB, Dhaka, running from Iftaar to Seheri",
          disc="Brand identity, vendor communication system, promotional campaign", year="", cat="events",
          stat="10,000+", statlabel="attendees over two nights, with 40+ food vendors", theme="t-plum",
          photo=("seheri-crowd", 961, 471, "A crowd filling the market hall during Seheri Nights, seen from above"),
@@ -86,7 +99,7 @@ WORK = [
          did=["Brand identity", "Vendor communication system", "Promotional campaign"],
          facts=[("Role", "Brand and communication design"), ("Venue", "ICCB, Dhaka"), ("Format", "Open-air night market"), ("Result", "10,000+ attendees")],
          result=""),
-    dict(no="04", href="work-the-audio-expo.html", title="The Audio Expo", tagline="A listening experience for audiophiles, made with Gears For Ears",
+    dict(no="05", href="work-the-audio-expo.html", title="The Audio Expo", tagline="A listening experience for audiophiles, made with Gears For Ears",
          disc="Creative direction, identity, environmental design, experience planning", year="2025", cat="events",
          stat="First", statlabel="ever audiophile meetup", theme="t-verm",
          photo=("audio-booth", 1800, 868, "The Audio Expo backdrop above a row of headphones and listening gear"),
@@ -98,15 +111,6 @@ WORK = [
          did=["Creative direction", "Brand identity", "Environmental design", "Experience planning"],
          facts=[("Role", "Creative direction and identity"), ("With", "Gears For Ears"), ("Year", "2025"), ("Result", "First audiophile meetup")],
          result="Strong engagement from the industry."),
-    dict(no="05", href="work-first-momentum.html", title="First Momentum", tagline="Electromechanical Expo Dhaka, organised by Grandyra at Aloki, Dhaka",
-         disc="Expo organised by Grandyra", year="Upcoming", cat="events",
-         stat="26–28 Jan", statlabel="2027, at Aloki, Dhaka", theme="t-gold", img="first-momentum", poster=True,
-         lede="An expo that Grandyra is organising, bringing the people who build with the brands that equip them.",
-         body=["First Momentum is the Electromechanical Expo Dhaka. It is a platform that brings developers, architects, MEP consultants, regulators and students together with elevator, HVAC, generator and solar brands.",
-               "Unlike our other projects, this one is organised by Grandyra itself."],
-         did=[],
-         facts=[("Role", "Organiser"), ("Venue", "Aloki, Dhaka"), ("When", "26–28 January 2027"), ("Status", "Upcoming")],
-         result=""),
 ]
 
 ISSUES = [
@@ -115,10 +119,10 @@ ISSUES = [
 ]
 
 PHOTOS = {
-    "festival": ("photo-1767330855011-fc628d33caea", "Samiul Haque Bhuyan", "samiulhaquebhuyan", "Pohela Boishakh procession in Dhaka with colourful masks"),
+    "traffic": (None, None, None, "A crowded Dhaka road full of rickshaws, motorbikes, cars and buses, seen from above"),
     "dhaka": ("photo-1748353671829-f64d0aa1bc51", "Serzill Hasan", "serzill", "Aerial view of Uttara, Dhaka, at sunset"),
     "buriganga": ("photo-1788888106259-270e33a79d02", "Anik Roy", "anik_roy", "Wooden boats crossing the Buriganga river in Dhaka"),
-    "rickshaw": ("photo-1695374345839-a6869ae9d6c1", "Sadnan Bashar", "sadnanbashar", "A rickshaw puller resting between rides on a Dhaka street"),
+    "billboards": (None, None, None, "Large illuminated advertising screens on a curved building at dusk"),
     "swatches": ("photo-1716471330463-f475b00f0506", "Andy Brown", "basallt", "Colour swatch cards on a designer's desk"),
     "sketches": ("photo-1629752187687-3d3c7ea3a21b", "Hal Gatewood", "halacious", "Hand-drawn layout sketches"),
     "pantone": ("photo-1581079289196-67865ea83118", "Mika Baumeister", "kommumikation", "A fan deck of printed colour swatches"),
@@ -126,6 +130,8 @@ PHOTOS = {
     "press": ("photo-1503694978374-8a2fa686963a", "Bank Phrom", "bank_phrom", "An offset printing press in motion"),
 }
 UTM = "?utm_source=grandyra&utm_medium=referral"
+# Real pixel sizes for photos that are not 1600x1067 stock: (width, height, width of the -sm file)
+PHOTO_SIZE = {"traffic": (640, 899, 480), "billboards": (1600, 1000, 800)}
 
 
 def photo(key, fallback, cls="", reveal=True, parallax=False, sizes="(max-width: 900px) 100vw, 60vw", eager=False):
@@ -135,11 +141,12 @@ def photo(key, fallback, cls="", reveal=True, parallax=False, sizes="(max-width:
     p = " data-parallax" if parallax else ""
     load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
     credit = (f'<span class="tag credit">Photo: <a href="https://unsplash.com/@{user}{UTM}" rel="noopener">{name}</a> / '
-              f'<a href="https://unsplash.com/{UTM}" rel="noopener">Unsplash</a></span>')
-    return (f'<div class="imgr {cls}"{r}{p}>{credit}<img src="{base}.webp" srcset="{base}-sm.webp 800w, {base}.webp 1600w" '
-            f'sizes="{sizes}" width="1600" height="1067" alt="{html.escape(alt)}" {load}></div>')
+              f'<a href="https://unsplash.com/{UTM}" rel="noopener">Unsplash</a></span>') if name else ""
+    w, h, sw = PHOTO_SIZE.get(key, (1600, 1067, 800))
+    return (f'<div class="imgr {cls}"{r}{p}>{credit}<img src="{base}.webp" srcset="{base}-sm.webp {sw}w, {base}.webp {w}w" '
+            f'sizes="{sizes}" width="{w}" height="{h}" alt="{html.escape(alt)}" {load}></div>')
 
-SVC_PHOTO = {"brand-identity-design": "swatches", "rebranding": "sketches", "brand-launch": "festival", "packaging-design": "pantone",
+SVC_PHOTO = {"brand-identity-design": "swatches", "rebranding": "sketches", "brand-launch": "traffic", "packaging-design": "pantone",
              "advertising-agency": "press", "brand-marketing": "dhaka", "event-management": "stage"}
 SHOW_DRAFT = False  # True shows sections still waiting for real Grandyra content
 
@@ -208,6 +215,7 @@ ORG["sameAs"] = [u for _, u in SOCIAL]
 ORG["@id"] = BASE + "/#org"
 ORG["url"] = BASE + "/"
 ORG["email"] = EMAIL
+ORG["telephone"] = PHONE_TEL
 ORG["logo"] = BASE + "/assets/icon-512.png"
 ORG["address"] = {"@type": "PostalAddress", "streetAddress": "House 7, Road 4, Gulshan-1", "addressLocality": "Dhaka", "addressCountry": "BD"}
 
@@ -215,6 +223,10 @@ ORG["address"] = {"@type": "PostalAddress", "streetAddress": "House 7, Road 4, G
 def mail_row():
     return (f'<span class="mailrow"><a class="mail" href="mailto:{EMAIL}">{EMAIL}</a>'
             f'<button type="button" class="copy" data-copy="{EMAIL}" aria-label="Copy email address">Copy</button></span>')
+
+
+def phone_link(cls="ulink"):
+    return f'<a class="{cls}" href="tel:{PHONE_TEL}">{PHONE}</a>'
 
 
 def chrome_top(current=""):
@@ -246,7 +258,7 @@ def chrome_top(current=""):
   <nav aria-label="Main">{nav}</nav>
   <aside>
     <div class="pic"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/img/work-04-sm.webp" alt="" width="800" height="600"></div>
-    <div><p class="label muted">Say hello</p><ul><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li class="muted">{ADDRESS}</li></ul>
+    <div><p class="label muted">Say hello</p><ul><li><a href="mailto:{EMAIL}">{EMAIL}</a></li><li><a href="tel:{PHONE_TEL}">{PHONE}</a></li><li class="muted">{ADDRESS}</li></ul>
     <p class="label muted" style="margin-top:2rem">Elsewhere</p><ul>{social_links()}</ul></div>
   </aside>
 </div>'''
@@ -264,6 +276,7 @@ def chrome_bottom():
   <div class="foot-grid">
     <div>
       {mail_row()}
+      <p class="phonerow">{phone_link()}</p>
       <address class="muted" style="margin-top:1.5rem;font-style:normal">Grandyra Limited<br>{ADDRESS}<br><span class="clk">It’s <span data-clock>--:--</span> in Dhaka right now.</span></address>
     </div>
     <div><h3 class="label">Services</h3><ul>{svc}<li><a href="services.html">All services</a></li></ul></div>
@@ -422,17 +435,17 @@ def build():
     <div><div class="badge" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text font-size="15.5" font-weight="600" letter-spacing="4.2" fill="currentColor" font-family="Archivo"><textPath href="#c">GREATNESS OVER NOISE • CLARITY OVER COMPLEXITY •</textPath></text></svg><span class="core"></span></div></div>
     <div>
       <p class="txt" data-scrub>Grandyra is a branding and communications house in Dhaka. We start by asking why: why this business, why now, why would anyone choose it. Then we build the <a href="brand-identity-design.html">brand</a>, the <a href="advertising-agency.html">campaign</a> and the <a href="event-management.html">experience</a> that answer it. Strategy first. Then the <span class="it">beautiful</span> part.</p>
-      <div class="cta-row fade"><a class="pill solid" href="work.html" data-magnetic>See our work</a><a class="pill" href="contact.html">Start a project</a></div>
+      <div class="cta-row cta-lead fade"><a class="pill solid" href="contact.html" data-magnetic>Start a project</a><a class="tlink" href="work.html">See our work <span aria-hidden="true">→</span></a></div>
     </div>
   </div>
 </section>
 
 <section class="band t-bone" aria-label="Dhaka, in colour">
   <div class="band-grid wrap">
-    {photo("festival", "svc-event-management", cls="tall", parallax=True)}
+    {photo("traffic", "svc-event-management", cls="tall", parallax=True)}
     <div class="band-txt"><p class="label muted">Where we work</p>
     <p class="big-text fade" style="margin-top:1rem">Dhaka is loud, colourful and never still. In a city like this, the brands people remember are the clear ones.</p>
-    {photo("rickshaw", "studio-01", cls="small")}</div>
+    {photo("billboards", "studio-01", cls="small")}</div>
   </div>
 </section>
 <section class="hwork t-ink" aria-labelledby="sw">
@@ -563,7 +576,7 @@ def build():
 {cs_block("Venue branding", "Branding the court", "Court-side banners and wall graphics at ISD carried the identity into the space, for the players and the crowd.", "futsal-venue", "Branded banners and wall graphics at the ISD venue")}
 {cs_block("Digital and social campaign", "Built for the feed and the big screen", "Social creatives and live-screening graphics shared the same look as everything on the court.", "futsal-social", "Social campaign creatives and live screening graphics")}
 {cs_block("On the turf", "Unforgettable moments", "The branding at work with teams, organisers and the crowd, and the Grandyra team on the day.", "futsal-moments", "Photographs from the tournament court and crowd")}
-{next_card(0)}
+{next_card(next(i for i, w in enumerate(WORK) if w.get("real")))}
 <section class="sec t-ink wrap"><div class="split2"><div class="side"><p class="label muted">Next</p><h2 class="d d-m" style="margin-top:1rem">Planning an event?</h2></div>
 <div><p class="big-text fade">We design the brand, the space and the story as one piece, so the event feels like itself.</p>
 <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2rem"><a class="pill" href="event-management.html">Event production</a><a class="pill solid" href="contact.html">Start a conversation</a></div></div></div></section>
@@ -576,7 +589,7 @@ def build():
 
     # ============================ PROJECT CASE STUDIES ============================
     def pimg(n, wd, ht, alt, sizes, eager=False, cls="", parallax=False):
-        sm = min(700, wd)
+        sm = 800 if n.endswith("-wide") else min(700, wd)
         load = 'fetchpriority="high"' if eager else 'loading="lazy" decoding="async"'
         par = " data-parallax" if parallax else ""
         return (f'<div class="imgr {cls}" data-reveal{par}><img src="assets/img/{n}.webp" srcset="assets/img/{n}-sm.webp {sm}w, assets/img/{n}.webp {wd}w" '
@@ -588,11 +601,10 @@ def build():
         facts = "".join(f'<div><dt class="label">{k}</dt><dd>{v}</dd></div>' for k, v in w["facts"])
         body = "".join(f'<p class="big-text fade"{" style=margin-top:2rem" if n else ""}>{p}</p>' for n, p in enumerate(w["body"]))
         body = body.replace("style=margin-top:2rem", 'style="margin-top:2rem"')
-        if w.get("poster"):
-            n = w["img"]
-            hero = (f'<section class="t-ink" style="padding-bottom:5rem"><div class="cover-band cs-poster"><div class="imgr board poster" data-reveal><img src="assets/img/{n}.webp" '
-                    f'srcset="assets/img/{n}-sm.webp 540w, assets/img/{n}.webp 900w" sizes="(max-width: 700px) 90vw, 420px" width="900" height="2250" '
-                    f'alt="Teaser artwork for First Momentum 2027, the Electromechanical Expo Dhaka: Coming soon, where great things begin" fetchpriority="high"></div></div></section>')
+        if w.get("art"):  # event artwork with lettering: shown whole, never cropped
+            an, aw, ah = w["art"]
+            hero = (f'<section class="t-ink" style="padding-bottom:5rem"><div class="cover-band cs-art">'
+                    f'{pimg(an, aw, ah, w["photo"][3], "(max-width: 900px) 100vw, 90vw", eager=True)}</div></section>')
         else:
             pn, pw, ph, palt = w["photo"]
             mx = f' style="max-width:{w["hero_max"]}px;margin-inline:auto"' if w.get("hero_max") else ""
@@ -788,8 +800,9 @@ def build():
 <section class="t-ink wrap" style="padding-bottom:8rem"><div class="split2">
   <div class="side">
     <p class="lede">A few questions help us make the first conversation a useful one. We read every message and reply personally.</p>
-    <div style="margin-top:2.5rem"><p class="label muted">Or write to us directly</p>
+    <div style="margin-top:2.5rem"><p class="label muted">Or reach us directly</p>
     <div style="margin-top:.6rem">{mail_row()}</div>
+    <p class="phonerow">{phone_link()}</p>
     <p class="label muted" style="margin-top:2rem">Studio</p>
     <address style="font-style:normal;margin-top:.5rem">Grandyra Limited<br>{ADDRESS}<br><a class="ulink" href="{maps}" target="_blank" rel="noopener">Open in Maps</a></address>
     <p class="muted clk" style="margin-top:1.5rem">It’s <span data-clock>--:--</span> in Dhaka right now.</p></div>

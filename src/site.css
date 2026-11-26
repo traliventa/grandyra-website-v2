@@ -543,8 +543,7 @@ html:not(.js) .fade { opacity: 1; transform: none; }
 .nxt-tl { display: block; max-width: 48ch; color: rgba(238,233,223,.65); }
 .typo.big { aspect-ratio: auto; width: 100%; min-height: clamp(280px, 38vw, 560px); }
 .typo.big .typo-stat { font-size: clamp(5rem, 16vw, 16rem); }
-.cs-poster .imgr { aspect-ratio: 2/5; max-width: min(420px, 100%); margin: 0 auto; }
-.board.poster { aspect-ratio: 2/5; background: #FBF8F3; }
+.cover-band.cs-art .imgr { aspect-ratio: 1680/896; max-width: 1680px; margin: 0 auto; }
 
 /* project photography (from Grandyra's own profile) and number band */
 .pwide { aspect-ratio: 2/1; }
@@ -617,3 +616,12 @@ html:not(.js) .fade { opacity: 1; transform: none; }
 .dhaka .imgr img { width: 100%; height: 100%; object-fit: cover; }
 .dhaka .imgr .credit { z-index: 3; left: auto; right: .9rem; }
 .dhaka::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(13,13,11,.15), rgba(13,13,11,.55)); }
+
+/* ---------- Plain text link beside a button; phone line ---------- */
+.cta-row.cta-lead { align-items: center; gap: .6rem clamp(1.25rem, 3vw, 2.4rem); }
+.tlink { display: inline-flex; align-items: center; gap: .55rem; min-height: 44px; font-size: 1.05rem; font-weight: 500; }
+.tlink span { transition: transform .5s var(--ease); }
+.tlink:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+.tlink:hover span { transform: translateX(6px); }
+.phonerow { margin: .9rem 0 0; font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 500; }
+.phonerow a:hover { color: var(--verm); }
